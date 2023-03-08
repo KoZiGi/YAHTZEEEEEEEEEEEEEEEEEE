@@ -48,7 +48,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // 
             // Dice1
             // 
-            this.Dice1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Dice1.BackColor = System.Drawing.Color.PowderBlue;
             this.Dice1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice1.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -61,7 +61,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // 
             // Dice2
             // 
-            this.Dice2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Dice2.BackColor = System.Drawing.Color.PowderBlue;
             this.Dice2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice2.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -74,7 +74,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // 
             // Dice3
             // 
-            this.Dice3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Dice3.BackColor = System.Drawing.Color.PowderBlue;
             this.Dice3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice3.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,7 +87,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // 
             // Dice4
             // 
-            this.Dice4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Dice4.BackColor = System.Drawing.Color.PowderBlue;
             this.Dice4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice4.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -100,7 +100,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // 
             // Dice5
             // 
-            this.Dice5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Dice5.BackColor = System.Drawing.Color.PowderBlue;
             this.Dice5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice5.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,9 +114,9 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // ThrowBtn
             // 
             this.ThrowBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ThrowBtn.Location = new System.Drawing.Point(215, 99);
+            this.ThrowBtn.Location = new System.Drawing.Point(66, 99);
             this.ThrowBtn.Name = "ThrowBtn";
-            this.ThrowBtn.Size = new System.Drawing.Size(80, 35);
+            this.ThrowBtn.Size = new System.Drawing.Size(378, 35);
             this.ThrowBtn.TabIndex = 1;
             this.ThrowBtn.Text = "Dobni";
             this.ThrowBtn.UseVisualStyleBackColor = true;
@@ -177,7 +177,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // 
             this.button1.Location = new System.Drawing.Point(6, 237);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(199, 33);
             this.button1.TabIndex = 1;
             this.button1.Text = "Pont leadás";
             this.button1.UseVisualStyleBackColor = true;
