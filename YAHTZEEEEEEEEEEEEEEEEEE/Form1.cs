@@ -12,10 +12,13 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
 {
     public partial class Form1 : Form
     {
+        static List<int> rolls = GameFuctions.Rolls(6);
+
         public Form1()
         {
             InitializeComponent();
             setUpDisplayFunctions();
+            MessageBox.Show($"{rolls[0]}, {rolls[1]}, {rolls[2]}, {rolls[3]}, {rolls[4]}, {rolls[5]}");
         }
         private void setUpDisplayFunctions()
         {
