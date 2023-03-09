@@ -14,5 +14,9 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             if (number > 0 && number < 7) MessageBox.Show("Single_Scores, rossz bemeneti paraméter!");
         }
 
+        public static void Drill_Poker_Yahtzee_check(int number)
+        {       //this checks the Drill_Poker_Yahtzee_check function
+            if (number < 3 || number > 5) MessageBox.Show("Drill poker Yahtzee check, rossz bemeneti paraméter!");
+        }
     }
 }
