@@ -33,9 +33,37 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
         }
 
         public static int Straight_Check(bool isSmallStraight, List<int> rolls)
+        {   
+            bool midle_numbers = rolls.Contains(2) && rolls.Contains(3) && rolls.Contains(4) && rolls.Contains(5);
+            if (midle_numbers)
+            {
+                if (rolls.Contains(1) && isSmallStraight) return 30;
+                if (rolls.Contains(6) && !isSmallStraight) return 40;
+            }
+            return 0;
+        }
+
+        public static int Chance_Check(List<int> rolls)
         {
-            //if(isSmallStraight)
-            return 394829;
+            return rolls.Sum();
+        }
+
+        public static int Drill_Poker_Yahtzee_check(List<int> rolls, int times)
+        {   
+            TroubleShooting.Drill_Poker_Yahtzee_check(times);
+            Dictionary<int, int> result = rolls_to_dict(rolls);
+            if (times == 5 && result.Values.Contains(5)) return 50;
+            if (result.Values.Contains(times)) return times * multiple_values(result, times);
+            return 0;
+        }
+
+        private static int multiple_values(Dictionary<int, int> dict, int times)
+        {
+            foreach (KeyValuePair<int,int> item in dict)
+            {
+                if (item.Value == times) return item.Key;
+            }
+            return 0;
         }
 
         private static List<int> check_for_pairs(List<int> rolls)
@@ -50,15 +78,34 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             return multiple_result.OrderByDescending(x=>x).ToList();
         }
 
-        private static int chechk_for_straights(List<int> rolls)
+        public static int Fullhouse_check(List<int> rolls)
         {
-            bool midle_numbers = rolls.Contains(2) && rolls.Contains(3) && rolls.Contains(4) && rolls.Contains(5);
-            if (midle_numbers)
-            {
-                if (rolls.Contains(1)) return 30;
-                if (rolls.Contains(6)) return 40;
-            } 
+            Dictionary<int, int> unit_per_num = rolls_to_dict(rolls);
+            if (unit_per_num.Count == 2
+                && unit_per_num.Values.Contains(2)
+                && unit_per_num.Values.Contains(3)) return fullhouse_score_calc(unit_per_num); 
             return 0;
+        }
+
+        private static int fullhouse_score_calc(Dictionary<int, int> unit_per_num)
+        {
+            int result = 0;
+            foreach (KeyValuePair<int,int> item in unit_per_num)
+            {
+                result += item.Key * item.Value;
+            }
+            return result;
+        }
+
+        private static Dictionary<int,int> rolls_to_dict(List<int> rolls)
+        {
+            Dictionary<int, int> result = new Dictionary<int, int>();
+            foreach(var item in rolls)
+            {
+                if (!result.Keys.Contains(item)) result.Keys.Append(item);
+                else result[item]++;
+            }    
+            return result;
         }
     }
 }
