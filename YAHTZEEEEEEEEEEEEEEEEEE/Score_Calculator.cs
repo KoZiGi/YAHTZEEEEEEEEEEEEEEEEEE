@@ -34,7 +34,8 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
 
         public static int Straight_Check(bool isSmallStraight, List<int> rolls)
         {
-            if(isSmallStraight)
+            //if(isSmallStraight)
+            return 394829;
         }
 
         private static List<int> check_for_pairs(List<int> rolls)

@@ -37,7 +37,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.ThrowBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.PointBtn = new System.Windows.Forms.Button();
             this.yourScoreLbx = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.LeaderboardLbx = new System.Windows.Forms.ListBox();
@@ -78,7 +78,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.Dice3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice3.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dice3.Location = new System.Drawing.Point(312, 31);
+            this.Dice3.Location = new System.Drawing.Point(230, 31);
             this.Dice3.Name = "Dice3";
             this.Dice3.Size = new System.Drawing.Size(50, 50);
             this.Dice3.TabIndex = 0;
@@ -91,7 +91,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.Dice4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice4.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dice4.Location = new System.Drawing.Point(394, 31);
+            this.Dice4.Location = new System.Drawing.Point(312, 31);
             this.Dice4.Name = "Dice4";
             this.Dice4.Size = new System.Drawing.Size(50, 50);
             this.Dice4.TabIndex = 0;
@@ -104,7 +104,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.Dice5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Dice5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Dice5.Font = new System.Drawing.Font("OCR A Extended", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dice5.Location = new System.Drawing.Point(230, 31);
+            this.Dice5.Location = new System.Drawing.Point(394, 31);
             this.Dice5.Name = "Dice5";
             this.Dice5.Size = new System.Drawing.Size(50, 50);
             this.Dice5.TabIndex = 0;
@@ -125,9 +125,9 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Dice4);
+            this.groupBox1.Controls.Add(this.Dice5);
             this.groupBox1.Controls.Add(this.ThrowBtn);
             this.groupBox1.Controls.Add(this.Dice1);
-            this.groupBox1.Controls.Add(this.Dice5);
             this.groupBox1.Controls.Add(this.Dice2);
             this.groupBox1.Controls.Add(this.Dice3);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -139,7 +139,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.PointBtn);
             this.groupBox2.Controls.Add(this.yourScoreLbx);
             this.groupBox2.Location = new System.Drawing.Point(12, 170);
             this.groupBox2.Name = "groupBox2";
@@ -148,14 +148,16 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pontok";
             // 
-            // button1
+            // PointBtn
             // 
-            this.button1.Location = new System.Drawing.Point(6, 237);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Pont leadás";
-            this.button1.UseVisualStyleBackColor = true;
+            this.PointBtn.Enabled = false;
+            this.PointBtn.Location = new System.Drawing.Point(6, 237);
+            this.PointBtn.Name = "PointBtn";
+            this.PointBtn.Size = new System.Drawing.Size(199, 33);
+            this.PointBtn.TabIndex = 1;
+            this.PointBtn.Text = "Pont leadás";
+            this.PointBtn.UseVisualStyleBackColor = true;
+            this.PointBtn.Click += new System.EventHandler(this.PointBtn_Click);
             // 
             // yourScoreLbx
             // 
@@ -213,7 +215,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
         private System.Windows.Forms.ListBox yourScoreLbx;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox LeaderboardLbx;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button PointBtn;
     }
 }
 

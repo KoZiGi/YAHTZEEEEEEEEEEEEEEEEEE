@@ -12,41 +12,72 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
 {
     public partial class Form1 : Form
     {
-        private int currentPlayerIndex = 0;
-        public Form1(List<string> players)
+        private Label[] dices = new Label[] { };
+        public Form1()
         {
             InitializeComponent();
-            setUpDisplayFunctions(players);
+            setUpDisplayFunctions();
+            dices = new Label[] { Dice1, Dice2, Dice3, Dice4, Dice5 };
             LeaderboardLbx.SelectedIndexChanged += delegate { handlePlayerinput(); };
+
         }
-        private void setUpDisplayFunctions(List<string> players)
+        private void setUpDisplayFunctions()
         {
             Dice1.Click += delegate { Display.diceClick(Dice1); };
             Dice2.Click += delegate { Display.diceClick(Dice2); };
             Dice3.Click += delegate { Display.diceClick(Dice3); };
             Dice4.Click += delegate { Display.diceClick(Dice4); };
             Dice5.Click += delegate { Display.diceClick(Dice5); };
-            setUpLeaderBoard(players);
+            setUpLeaderBoard();
         }
         private void handlePlayerinput()
         {
-            LeaderboardLbx.SelectedIndex = currentPlayerIndex;
+            LeaderboardLbx.SelectedIndex = Globals.CurrentPlayerIndex;
         }
-        private void setUpLeaderBoard(List<string> players)
+        private void setUpLeaderBoard()
         {
-            if (players.ToArray().Length > 0)
+            if (Globals.Players.Count<1)
             {
-                LeaderboardLbx.Items.AddRange(players.ToArray());
+                Globals.Players.Add(new Player("Játékos 1"));
             }
-            else
-            {
-                LeaderboardLbx.Items.Add("Játékos 1");
-            }
-            LeaderboardLbx.SelectedIndex = currentPlayerIndex;
+            LeaderboardLbx.Items.AddRange(Globals.Players.Select(e=>e.Name).ToArray());
+            LeaderboardLbx.SelectedIndex = Globals.CurrentPlayerIndex;
         }
         private void ThrowBtn_Click(object sender, EventArgs e)
         {
-            Display.DisplayRoll(new Label[] { Dice1, Dice2, Dice3, Dice4, Dice5 }, GameFuctions.Rolls(5));
+            GameFuctions.AntiCheat(dices.ToList());
+            if (GetFreeze().Count > 0)
+            {
+                Display.DisplayRoll(dices, GameFuctions.Rolls(GetFreeze().ToArray(), Globals.Previous_Roll));
+            }
+            else
+            {
+               Display.DisplayRoll(new Label[] { Dice1, Dice2, Dice3, Dice4, Dice5 }, GameFuctions.Rolls(5));
+            }
+            GameFuctions.HandleRoll(ThrowBtn, PointBtn);
+        }
+        
+        /*
+         * 
+         * Gets all of the Dice Labels (e.g.: Dice1, Dice2)
+         * If the background color is 'HotPink', then return all of the labels names last characters, then
+         * subtracts one from it.
+         * ( example: Dice1 is HotPink -> (Dice) 1 - 1 = 0 )
+         */
+        private List<int> GetFreeze()
+        {
+            return dices
+                    .ToList()
+                    .Where(z => z.BackColor == Color.HotPink)
+                    .Select(e => Convert.ToInt32(e.Name[e.Name.Length - 1].ToString()) - 1)
+                    .ToList();
+        }
+
+        private void PointBtn_Click(object sender, EventArgs e)
+        {
+            Globals.Throws = 4;
+            GameFuctions.SwitchIndex();
+            GameFuctions.HandleRoll(ThrowBtn, PointBtn);
         }
     }
 }

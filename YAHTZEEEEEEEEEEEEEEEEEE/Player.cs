@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YAHTZEEEEEEEEEEEEEEEEEE
 {
-    class Player
+    public class Player
     {
         public string Name;
         private Scores playerScore = new Scores();

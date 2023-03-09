@@ -50,7 +50,8 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
 
         private void button3_Click(object sender, EventArgs e)
         {
-            new Form1(listBox1.Items.Cast<string>().ToList()).Show();
+            GameFuctions.AddPlayers(listBox1.Items.Cast<string>().ToList());
+            new Form1().Show();
         }
     }
 }
