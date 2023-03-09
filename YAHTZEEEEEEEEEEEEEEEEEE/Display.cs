@@ -28,7 +28,24 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
                 diceLbl.BackColor = Color.PowderBlue;
             }
         }
+        public static void ShowPublicScore(List<int> rolls)
+        {
+            ShowSingles(rolls);
+            ShowPairs(rolls);
 
+        }
+        private static void ShowSingles(List<int> rolls)
+        {
+            rolls
+                .Distinct()
+                .ToList()
+                .ForEach(e => {
+                    MessageBox.Show(Score_Calculator.Single_Scores(e, rolls).ToString()); 
+                });
+        }
+        private static void ShowPairs(List<int> rolls)
+        {
 
+        }
     }
 }

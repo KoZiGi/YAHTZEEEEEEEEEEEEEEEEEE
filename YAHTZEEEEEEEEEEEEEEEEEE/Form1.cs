@@ -46,15 +46,19 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
         private void ThrowBtn_Click(object sender, EventArgs e)
         {
             GameFuctions.AntiCheat(dices.ToList());
+            List<int> Rolls;
             if (GetFreeze().Count > 0)
             {
-                Display.DisplayRoll(dices, GameFuctions.Rolls(GetFreeze().ToArray(), Globals.Previous_Roll));
+                Rolls = GameFuctions.Rolls(GetFreeze().ToArray(), Globals.Previous_Roll);
+                Display.DisplayRoll(dices, Rolls);
             }
             else
             {
-               Display.DisplayRoll(new Label[] { Dice1, Dice2, Dice3, Dice4, Dice5 }, GameFuctions.Rolls(5));
+                Rolls = GameFuctions.Rolls(5);
+                Display.DisplayRoll(dices, Rolls);
             }
             GameFuctions.HandleRoll(ThrowBtn, PointBtn);
+            Display.ShowPublicScore(Rolls);
         }
         
         /*

@@ -30,6 +30,10 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             FullHouse = -1;
             Sum = -1;
         }
-
+        public int TotalScore() => Singles.Where(e=>e!=-1).Sum() + Pairs.Where(e=>e!=-1).Sum() +
+                                   ThreeOfAKind + FourOfAKind +
+                                   Yahtzee + StraightLarge + StraightSmall +
+                                   FullHouse + Sum;
+        private int TotalHelper(int points) => points;
     }
 }

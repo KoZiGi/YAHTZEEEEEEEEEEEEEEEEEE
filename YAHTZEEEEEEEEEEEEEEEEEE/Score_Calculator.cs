@@ -10,7 +10,6 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
     {
         public static int Single_Scores(int number, List<int> rolls)
         {       //returns single score for a specific number (1-6)
-            TroubleShooting.Singles_check(number);
             int score = 0;
             for (int i = 0; i < rolls.Count; i++)
             {
