@@ -10,7 +10,13 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
 {
     class Display
     {
-
+        public static void DisplayRoll(Label[] dices, List<int> roll)
+        {
+            for (int i = 0; i < dices.Length; i++)
+            {
+                dices[i].Text = roll[i].ToString();
+            }
+        }
         public static void diceClick(Label diceLbl)
         {
             if (diceLbl.BackColor == Color.PowderBlue)

@@ -37,10 +37,10 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.ThrowBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.yourScoreLbx = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.LeaderboardLbx = new System.Windows.Forms.ListBox();
-            this.yourScoreLbx = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -120,6 +120,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.ThrowBtn.TabIndex = 1;
             this.ThrowBtn.Text = "Dobni";
             this.ThrowBtn.UseVisualStyleBackColor = true;
+            this.ThrowBtn.Click += new System.EventHandler(this.ThrowBtn_Click);
             // 
             // groupBox1
             // 
@@ -147,6 +148,23 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pontok";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 237);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(199, 33);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Pont leadás";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // yourScoreLbx
+            // 
+            this.yourScoreLbx.FormattingEnabled = true;
+            this.yourScoreLbx.Location = new System.Drawing.Point(6, 19);
+            this.yourScoreLbx.Name = "yourScoreLbx";
+            this.yourScoreLbx.Size = new System.Drawing.Size(199, 212);
+            this.yourScoreLbx.TabIndex = 0;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.LeaderboardLbx);
@@ -164,23 +182,6 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.LeaderboardLbx.Name = "LeaderboardLbx";
             this.LeaderboardLbx.Size = new System.Drawing.Size(259, 251);
             this.LeaderboardLbx.TabIndex = 0;
-            // 
-            // yourScoreLbx
-            // 
-            this.yourScoreLbx.FormattingEnabled = true;
-            this.yourScoreLbx.Location = new System.Drawing.Point(6, 19);
-            this.yourScoreLbx.Name = "yourScoreLbx";
-            this.yourScoreLbx.Size = new System.Drawing.Size(199, 212);
-            this.yourScoreLbx.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 237);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Pont leadás";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
