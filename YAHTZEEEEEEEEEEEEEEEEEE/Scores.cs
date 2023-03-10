@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YAHTZEEEEEEEEEEEEEEEEEE
 {
-    class Scores
+    public class Scores
     {
         public int[] Singles;
         public int[] Pairs;
@@ -30,10 +30,15 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             FullHouse = -1;
             Sum = -1;
         }
-        public int TotalScore() => Singles.Where(e=>e!=-1).Sum() + Pairs.Where(e=>e!=-1).Sum() +
-                                   ThreeOfAKind + FourOfAKind +
-                                   Yahtzee + StraightLarge + StraightSmall +
-                                   FullHouse + Sum;
-        private int TotalHelper(int points) => points;
+        public int TotalScore() 
+            => Singles.Where(e=>e!=-1).Sum() + Pairs.Where(e=>e!=-1).Sum() +
+               TotalHelper(ThreeOfAKind) + TotalHelper(FourOfAKind) +
+               TotalHelper(Yahtzee) + TotalHelper(StraightLarge) + TotalHelper(StraightSmall) +
+               TotalHelper(FullHouse) + TotalHelper(Sum);
+        private int TotalHelper(int points) => points == -1 ? 0 : points;
+        public bool IsFinished()
+            =>  Singles.Count(e => e == -1) == 0 && Pairs.Count(e => e == -1) == 0 &&
+                ThreeOfAKind != -1 && FourOfAKind != -1 && Yahtzee != -1 &&
+                StraightLarge != -1 && StraightSmall != -1 && FullHouse != -1 && Sum != -1;
     }
 }

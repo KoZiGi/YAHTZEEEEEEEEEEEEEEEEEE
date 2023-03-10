@@ -18,7 +18,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             InitializeComponent();
             setUpDisplayFunctions();
             dices = new Label[] { Dice1, Dice2, Dice3, Dice4, Dice5 };
-            LeaderboardLbx.SelectedIndexChanged += delegate { handlePlayerinput(); };
+            //LeaderboardLbx.SelectedIndexChanged += delegate { handlePlayerinput(); };
 
         }
         private void setUpDisplayFunctions()
@@ -50,20 +50,20 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             if (GetFreeze().Count > 0)
             {
                 Rolls = GameFuctions.Rolls(GetFreeze().ToArray(), Globals.Previous_Roll);
+                Globals.Previous_Roll = Rolls;
                 Display.DisplayRoll(dices, Rolls);
             }
             else
             {
                 Rolls = GameFuctions.Rolls(5);
+                Globals.Previous_Roll = Rolls;
                 Display.DisplayRoll(dices, Rolls);
             }
             GameFuctions.HandleRoll(ThrowBtn, PointBtn);
-            Display.ShowPublicScore(Rolls);
+            Display.ShowPublicScore(Rolls, yourScoreLbx);
         }
         
-        /*
-         * 
-         * Gets all of the Dice Labels (e.g.: Dice1, Dice2)
+        /* Gets all of the Dice Labels (e.g.: Dice1, Dice2)
          * If the background color is 'HotPink', then return all of the labels names last characters, then
          * subtracts one from it.
          * ( example: Dice1 is HotPink -> (Dice) 1 - 1 = 0 )
@@ -79,9 +79,25 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
 
         private void PointBtn_Click(object sender, EventArgs e)
         {
-            Globals.Throws = 4;
-            GameFuctions.SwitchIndex();
-            GameFuctions.HandleRoll(ThrowBtn, PointBtn);
+            if (yourScoreLbx.SelectedIndex != -1)
+            {
+                if (GameFuctions.GivePoints(yourScoreLbx.Items[yourScoreLbx.SelectedIndex].ToString(), 1))
+                {
+                    Globals.Throws = 4;
+                    GameFuctions.SwitchIndex(LeaderboardLbx);
+                    GameFuctions.HandleRoll(ThrowBtn, PointBtn);
+                    Display.ShowPlayerScores(LeaderboardLbx);
+                }
+                else
+                {
+                    MessageBox.Show("bruh");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Válassz pontokat");
+            }
+
         }
     }
 }

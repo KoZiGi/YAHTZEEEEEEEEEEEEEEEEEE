@@ -10,6 +10,94 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
 {
     class GameFuctions
     {
+        public static bool GivePoints(string text, int points)
+        {
+            try
+            {
+                return giveSingles(Convert.ToInt32(text.Split(':')[0]) - 1, Convert.ToInt32(text.Split(':')[1]));
+            }
+            catch (Exception)
+            {
+                return getSelect(text);
+            }
+        }
+        private static bool givePairs(int points, string type)
+        {
+            switch (type)
+            {
+                case "Pár":
+                    if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.Pairs[0]==-1)
+                    {
+                        Globals.Players[Globals.CurrentPlayerIndex].playerScore.Pairs[0] = points;
+                        return true;
+                    }
+                    return false;
+                case "Két pár":
+                    if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.Pairs[1]==-1)
+                    {
+                        Globals.Players[Globals.CurrentPlayerIndex].playerScore.Pairs[1] = points;
+                        return true;
+                    }
+                    return false;
+                default: return false;
+            }
+        }
+        private static bool giveSingles(int index, int points)
+        {
+            if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.Singles[index] == -1)
+            {
+                Globals.Players[Globals.CurrentPlayerIndex].playerScore.Singles[index] = points;
+                return true;
+            }
+            return false;
+        }
+        private static bool giveKinds(int points, string type)
+        {
+            switch (type)
+            {
+                case "Drill":
+                    if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.ThreeOfAKind == -1)
+                    {
+                        Globals.Players[Globals.CurrentPlayerIndex].playerScore.ThreeOfAKind = points;
+                        return true;
+                    }
+                    return false;
+                case "Póker":
+                    if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.FourOfAKind==-1)
+                    {
+                        Globals.Players[Globals.CurrentPlayerIndex].playerScore.FourOfAKind = points;
+                        return true;
+                    }
+                    return false;
+                case "Yahtzee":
+                    if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.Yahtzee == -1)
+                    {
+                        Globals.Players[Globals.CurrentPlayerIndex].playerScore.Yahtzee = points;
+                        return true;
+                    }
+                    return false;
+                default:
+                    return false;
+            }
+        }
+        private static bool getSelect(string text) 
+        {
+            switch (text.Split(':')[0])
+            {
+                case "Drill":
+                case "Póker":
+                case "Yahtzee":
+                    return giveKinds(Convert.ToInt32(text.Split(':')[1]), text.Split(':')[0]);
+                case "Két pár":
+                case "Pár":
+                    return givePairs(Convert.ToInt32(text.Split(':')[1]), text.Split(':')[0]);
+                case "Full":
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
         public static List<int> Rolls(int roll_count)
         {           //this function returns "roll_count" rolls
             List<int> rolls = new List<int>();
@@ -27,7 +115,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
                 if (!isFrozen(dontRollHere, i))
                 {
                     previous[i] = random_roll();
-                    Thread.Sleep(10);
+                    Thread.Sleep(new Random().Next(1,11));
                 }
             }
             return previous;
@@ -68,10 +156,13 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
         {
             Globals.Players = playerNames.Select(e => new Player(e)).ToList();
         }
-        public static void SwitchIndex()
+        public static void SwitchIndex(ListBox lbx)
         {
             if (Globals.CurrentPlayerIndex + 1 >= Globals.Players.Count)
+            {
                 Globals.CurrentPlayerIndex = 0;
+                lbx.SelectedIndex = Globals.CurrentPlayerIndex;
+            }
             else Globals.CurrentPlayerIndex++;
         }
     }

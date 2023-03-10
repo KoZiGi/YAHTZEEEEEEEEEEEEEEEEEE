@@ -55,6 +55,14 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             if (result.Values.Contains(times)) return times * multiple_values(result, times);
             return 0;
         }
+        public static int kindCheck(List<int> rolls, int count)
+        {
+            for (int i = 1; i < 7; i++)
+            {
+                if (rolls.Count(e => e == i) >= count) return count == 5 ? 50 : i * count;
+            }
+            return 0;
+        }
 
         private static int multiple_values(Dictionary<int, int> dict, int times)
         {

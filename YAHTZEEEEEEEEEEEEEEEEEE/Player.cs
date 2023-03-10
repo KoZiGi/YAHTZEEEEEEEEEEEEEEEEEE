@@ -9,7 +9,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
     public class Player
     {
         public string Name;
-        private Scores playerScore = new Scores();
+        public Scores playerScore = new Scores();
         public Player(string name)
         {
             Name = name;
