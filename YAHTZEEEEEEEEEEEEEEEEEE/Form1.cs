@@ -18,8 +18,6 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             InitializeComponent();
             setUpDisplayFunctions();
             dices = new Label[] { Dice1, Dice2, Dice3, Dice4, Dice5 };
-            //LeaderboardLbx.SelectedIndexChanged += delegate { handlePlayerinput(); };
-
         }
         private void setUpDisplayFunctions()
         {
@@ -29,10 +27,6 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             Dice4.Click += delegate { Display.diceClick(Dice4); };
             Dice5.Click += delegate { Display.diceClick(Dice5); };
             setUpLeaderBoard();
-        }
-        private void handlePlayerinput()
-        {
-            LeaderboardLbx.SelectedIndex = Globals.CurrentPlayerIndex;
         }
         private void setUpLeaderBoard()
         {
@@ -87,17 +81,13 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
                     GameFuctions.SwitchIndex(LeaderboardLbx);
                     GameFuctions.HandleRoll(ThrowBtn, PointBtn);
                     Display.ShowPlayerScores(LeaderboardLbx);
-                }
-                else
-                {
-                    MessageBox.Show("bruh");
+                    GameFuctions.CheckEnd();
                 }
             }
             else
             {
                 MessageBox.Show("Válassz pontokat");
             }
-
         }
     }
 }

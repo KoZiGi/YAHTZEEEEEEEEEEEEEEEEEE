@@ -21,6 +21,22 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
                 return getSelect(text);
             }
         }
+        public static void CheckEnd()
+        {
+            if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.IsFinished())
+            {
+                MessageBox.Show("vég");
+            }
+        }
+        private static bool giveSum(int points)
+        {
+            if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.Sum == -1)
+            {
+                Globals.Players[Globals.CurrentPlayerIndex].playerScore.Sum = points;
+                return true;
+            }
+            return false;
+        }
         private static bool givePairs(int points, string type)
         {
             switch (type)
@@ -80,10 +96,49 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
                     return false;
             }
         }
+        private static bool giveHouse(int points)
+        {
+            if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.FullHouse==-1)
+            {
+                Globals.Players[Globals.CurrentPlayerIndex].playerScore.FullHouse = points;
+                return true;
+            }
+            return false;
+        }
+        private static bool giveStraight(int points, string type)
+        {
+            if (type == "Kicsi")
+            {
+                return giveSmall(points);
+            }
+            else return giveBig(points);
+        }
+        private static bool giveSmall(int points)
+        {
+            if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.StraightSmall == -1)
+            {
+                Globals.Players[Globals.CurrentPlayerIndex].playerScore.StraightSmall = points;
+                return true;
+            }
+            return false;
+        }
+        private static bool giveBig(int points)
+        {
+            if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.StraightLarge == -1)
+            {
+                Globals.Players[Globals.CurrentPlayerIndex].playerScore.StraightLarge = points;
+                return true;
+            }
+            return false;
+        }
         private static bool getSelect(string text) 
         {
+            if (text.Contains("✔")) return false;
             switch (text.Split(':')[0])
             {
+                case "Sor Kicsi":
+                case "Sor Nagy":
+                    return giveStraight(Convert.ToInt32(text.Split(':')[1]), text.Split(':')[0].Split(' ')[1]);
                 case "Drill":
                 case "Póker":
                 case "Yahtzee":
@@ -92,9 +147,9 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
                 case "Pár":
                     return givePairs(Convert.ToInt32(text.Split(':')[1]), text.Split(':')[0]);
                 case "Full":
-                    return true;
+                    return giveHouse(Convert.ToInt32(text.Split(':')[1]));
                 default:
-                    return false;
+                    return giveSum(Convert.ToInt32(text.Split(':')[1]));
             }
         }
 

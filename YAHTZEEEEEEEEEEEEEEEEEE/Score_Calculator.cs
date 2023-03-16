@@ -63,7 +63,12 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             }
             return 0;
         }
+        public static int houseCheck(List<int> rolls)
+        {
 
+
+            return 0;
+        }
         private static int multiple_values(Dictionary<int, int> dict, int times)
         {
             foreach (KeyValuePair<int,int> item in dict)
