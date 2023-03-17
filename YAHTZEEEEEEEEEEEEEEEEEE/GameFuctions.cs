@@ -25,7 +25,10 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
         {
             if (Globals.Players[Globals.CurrentPlayerIndex].playerScore.IsFinished())
             {
-                MessageBox.Show("vég");
+                string winner = Globals.Players.Find(e => 
+                    e.playerScore.TotalScore() == Globals.Players.Max(g => g.playerScore.TotalScore())).Name;
+                MessageBox.Show($"Győztes: {winner}");
+                Application.Exit();
             }
         }
         private static bool giveSum(int points)

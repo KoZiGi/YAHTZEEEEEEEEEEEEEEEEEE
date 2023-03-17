@@ -65,8 +65,18 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
         }
         public static int houseCheck(List<int> rolls)
         {
-
-
+            if (rolls.Distinct().ToList().Count == 2)
+            {
+                if ((rolls.Count(e => rolls.Distinct().ToList()[0] == e) == 2 &&
+                    rolls.Count(e => rolls.Distinct().ToList()[1] == e) == 3) ||
+                    (rolls.Count(e => rolls.Distinct().ToList()[0] == e) == 3 &&
+                    rolls.Count(e => rolls.Distinct().ToList()[1] == e) == 2))
+                    return 25;
+            }
+            if (rolls.Distinct().ToList().Count == 1)
+            {
+                return 25;
+            }
             return 0;
         }
         private static int multiple_values(Dictionary<int, int> dict, int times)

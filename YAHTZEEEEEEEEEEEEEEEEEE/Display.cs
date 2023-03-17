@@ -75,7 +75,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             scorebox.Items.Add($"Yahtzee:{KindsGivePoints(5, rolls)}{KindsCheckMark(5, rolls)}");
         }
         private static void ShowHouse(List<int> rolls, ListBox scorebox)
-            => scorebox.Items.Add($"Full:{Score_Calculator.Fullhouse_check(rolls)}{FullCheckMark()}");
+            => scorebox.Items.Add($"Full:{Score_Calculator.houseCheck(rolls)}{FullCheckMark()}");
         private static int SumPoints(List<int> rolls) =>
             Globals.Players[Globals.CurrentPlayerIndex].playerScore.Sum == -1 ?
                 Score_Calculator.Chance_Check(rolls) :
