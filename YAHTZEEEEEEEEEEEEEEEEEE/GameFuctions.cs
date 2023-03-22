@@ -156,8 +156,9 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             }
         }
 
+        //this function returns "roll_count" amount of rolls
         public static List<int> Rolls(int roll_count)
-        {           //this function returns "roll_count" rolls
+        { 
             List<int> rolls = new List<int>();
             for (int i = 0; i < roll_count; i++)
             {
@@ -200,6 +201,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             else
                 PointButton.Enabled = true;
         }
+        //if there are frozen dices, unfreeze them so the player doesn't cheat.
         public static void AntiCheat(List<Label> dices)
         {
             if (Globals.Throws == 3)

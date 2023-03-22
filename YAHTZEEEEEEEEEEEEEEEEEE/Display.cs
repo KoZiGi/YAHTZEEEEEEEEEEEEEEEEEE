@@ -17,17 +17,9 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
                 dices[i].Text = roll[i].ToString();
             }
         }
-        public static void diceClick(Label diceLbl)
-        {
-            if (diceLbl.BackColor == Color.PowderBlue)
-            {
-                diceLbl.BackColor = Color.HotPink;
-            }
-            else
-            {
-                diceLbl.BackColor = Color.PowderBlue;
-            }
-        }
+        public static void diceClick(Label diceLbl) =>
+            diceLbl.BackColor =
+                diceLbl.BackColor == Color.PowderBlue ? Color.HotPink : Color.PowderBlue;
         public static void ShowPlayerScores(ListBox leaderboard)
         {
             leaderboard.Items.Clear();
@@ -75,7 +67,17 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             scorebox.Items.Add($"Yahtzee:{KindsGivePoints(5, rolls)}{KindsCheckMark(5, rolls)}");
         }
         private static void ShowHouse(List<int> rolls, ListBox scorebox)
-            => scorebox.Items.Add($"Full:{Score_Calculator.houseCheck(rolls)}{FullCheckMark()}");
+            => scorebox.Items.Add($"Full:{HouseGivePoints(rolls)}{FullCheckMark()}");
+
+        /*
+         * GivePoints Functions:
+         * if the player's score for the specific type is -1, aka. not choosen,
+         * then show the calculated score for that type, otherwise show the points for that type 
+         */
+        private static int HouseGivePoints(List<int> rolls)
+               => Globals.Players[Globals.CurrentPlayerIndex].playerScore.FullHouse == -1 ?
+                    Score_Calculator.houseCheck(rolls) :
+                    Globals.Players[Globals.CurrentPlayerIndex].playerScore.FullHouse;
         private static int SumPoints(List<int> rolls) =>
             Globals.Players[Globals.CurrentPlayerIndex].playerScore.Sum == -1 ?
                 Score_Calculator.Chance_Check(rolls) :
