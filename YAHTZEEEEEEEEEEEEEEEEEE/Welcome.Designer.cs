@@ -141,7 +141,7 @@ namespace YAHTZEEEEEEEEEEEEEEEEEE
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Welcome";
-            this.Text = "Welcome";
+            this.Text = "YAHTZEEEEEE";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
